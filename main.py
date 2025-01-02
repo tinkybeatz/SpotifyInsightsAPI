@@ -1,17 +1,20 @@
-import os
-
 from flask import Flask, session, url_for, request, redirect
 
 from spotipy import Spotify
 from spotipy.oauth2 import SpotifyOAuth
 from spotipy.cache_handler import FlaskSessionCacheHandler
 
-app = Flask(__name__)
-app.config['SECRET_KEY'] = os.urandom(64)
+from dotenv import load_dotenv
+import os
 
-client_id = '13e6c218b5674f5ab0617df6fe43ec2d'
-client_secret = 'c7472ba1952a4faf823ecd999ab77290'
-redirect_uri = 'https://localhost:5000/callback'
+load_dotenv()
+
+app = Flask(__name__)
+
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+client_id = os.getenv('CLIENT_ID')
+client_secret = os.getenv('CLIENT_SECRET')
+redirect_uri = os.getenv('REDIRECT_URI')
 scope = 'playlist-read-private'
 
 cache_handler = FlaskSessionCacheHandler(session)
@@ -58,6 +61,10 @@ def get_private_playlists():
 def logout():
     session.clear()
     return redirect(url_for('home'))
+
+@app.errorhandler(Exception)
+def handle_exception(e):
+    return {"error": str(e)}, 500
 
 if __name__ == '__main__':
     app.run(debug=True)
