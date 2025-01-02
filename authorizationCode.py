@@ -41,3 +41,12 @@ def get_playlists():
     playlists_info = [(pl['name'], pl['id'], pl['external_urls']['spotify']) for pl in playlists['items']]
     playlists_html = '<br>'.join([f'{name}: {id} | {url}' for name, id, url in playlists_info])
     return playlists_html
+
+# def get_playlist_info(playlist_id):
+#     auth_check = check_auth()
+#     if auth_check:
+#         return auth_check
+#     if not playlist_id:
+#         return "No playlist ID provided"
+#     playlist = sp.playlist(playlist_id)
+#     return playlist
