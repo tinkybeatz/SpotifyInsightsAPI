@@ -16,3 +16,11 @@ def get_playlist_info(playlist_id):
         return "No playlist ID provided"
     playlist = sp.playlist(playlist_id)
     return playlist
+
+def get_playlist_items(playlist_id, offset):
+    if not playlist_id:
+        return "No playlist ID provided"
+    if not offset:
+        return "No offset provided"
+    playlist_items = sp.playlist_items(playlist_id, offset)
+    return playlist_items

@@ -98,8 +98,13 @@ def private_playlists():
 
 @app.route('/playlist_info/<playlist_id>')
 def playlist_info(playlist_id):
-    # Fetch playlists only for logged-in users
+    # Fetch public playlists infos
     return clientCredentials.get_playlist_info(playlist_id)
+
+@app.route('/playlist_items/<playlist_id>/<offset>')
+def playlist_items(playlist_id, offset):
+    # Fetch public playlists items (with offset if needed)
+    return clientCredentials.get_playlist_items(playlist_id, offset)
 
 @app.route('/logout')
 def logout():
