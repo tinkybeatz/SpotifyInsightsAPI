@@ -14,13 +14,17 @@ sp = spotipy.Spotify(auth_manager=auth_manager)
 def get_playlist_info(playlist_id):
     if not playlist_id:
         return "No playlist ID provided"
+    
+    # Fetch initial playlist data
     playlist = sp.playlist(playlist_id)
+    tracks = playlist['tracks']
+    
+    # Fetch all tracks if there's pagination
+    while tracks['next']:
+        # Get the next batch of tracks
+        next_tracks = sp.next(tracks)
+        # Extend the list of tracks in the playlist dictionary
+        playlist['tracks']['items'].extend(next_tracks['items'])
+        tracks = next_tracks
+        
     return playlist
-
-def get_playlist_items(playlist_id, offset):
-    if not playlist_id:
-        return "No playlist ID provided"
-    if not offset:
-        return "No offset provided"
-    playlist_items = sp.playlist_items(playlist_id, offset)
-    return playlist_items
