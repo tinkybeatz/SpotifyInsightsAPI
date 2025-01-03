@@ -5,11 +5,13 @@ charset-normalizer==3.4.1
 click==8.1.8
 colorama==0.4.6
 Flask==3.0.2
+Flask-Cors==5.0.0
 idna==3.10
 importlib_metadata==8.5.0
 itsdangerous==2.2.0
 Jinja2==3.1.5
 MarkupSafe==3.0.2
+packaging==24.2
 pillow==11.0.0
 python-dotenv==1.0.1
 readerwriterlock==1.0.9
