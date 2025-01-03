@@ -75,8 +75,13 @@ import os
 import authorizationCode  # Importing the logged-in functionality
 import clientCredentials  # Importing the non-logged-in functionality
 
+from flask_cors import CORS
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+
+# Enable CORS for all routes
+CORS(app, origins=["http://localhost:4200", ["https://spotify-insights-ten.vercel.app"]])
 
 @app.route('/')
 def home():
