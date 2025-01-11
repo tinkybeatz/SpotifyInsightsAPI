@@ -36,7 +36,7 @@ You can now start coding
 
 ## Running dev server
 
-1. **Go in the project server**
+1. **Go in the project folder**
     ```bash
     cd SpotifyInsightsAPI/ 
 
