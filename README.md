@@ -1,6 +1,6 @@
-# Project Name  
+# SpotifyInsightsAPI
 
-A brief description of your project. Mention what it does and why it's useful.  
+This is the API for the SpotifyInsights webpage by tinkybeatz.
 
 ## Getting Started  
 
@@ -31,6 +31,8 @@ Make sure you have the following installed on your system:
 4. **Run the development server**
     ```bash
     python3 main.py
+
+You can now start coding
 
 ## Running dev server
 
